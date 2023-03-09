@@ -14,6 +14,19 @@ namespace SendDroneCommands
             t.m_useUnicode = true;
 
 
+            Console.WriteLine("Hello World!");
+            Console.WriteLine("");
+            Console.WriteLine("Documentation:");
+            Console.WriteLine("https://github.com/EloiStree/2023_01_27_GlobalGameJameDroneDoc");
+            Console.WriteLine("");
+            Console.WriteLine("Manual");
+            Console.WriteLine("> rc joystickLeftX joystickLeftY joystickRightX joystickRightY  (value between -1 & 1)");
+            Console.WriteLine("> rc 0 0 0 0   neutral     rc -1 0 1 0  turn left move forward");
+            Console.WriteLine("> rcs 1 0.5 1 1  max speed and slow down vertical move ");
+            Console.WriteLine("> ks1 || ks0   set the kill switch to on, off");
+            Console.WriteLine("> as1 || as0   set the armed switch to on, off");
+            Console.WriteLine("");
+
             Console.WriteLine("What is target ip (ex: 192.168.1.??) ?");
             string ip = Console.ReadLine();
 
@@ -26,11 +39,13 @@ namespace SendDroneCommands
             if (portStr.Length == 0)
                 portStr = "2509";
             int.TryParse(portStr, out int port);
-        
-            Console.WriteLine("Hello World!");
-            while (true) { 
-            Console.WriteLine("What is your commands master ?");
-             string answers =  Console.ReadLine();
+
+         
+
+            while (true)
+            {
+                Console.WriteLine("What is your commands master ?");
+                string answers =  Console.ReadLine();
                 answers = TryToParse(answers);
 
                 Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Dgram,
